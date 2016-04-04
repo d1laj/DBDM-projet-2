@@ -4,13 +4,19 @@ import sklearn
 from sklearn.svm import SVC
 from numpy import genfromtxt
 import numpy as np
+from write import write_in_file
 
-my_data = genfromtxt('train.csv', delimiter=',', dtype=type(1.), skip_header=1)
+ID = np.array([678, 679])
+Answers = np.array([-1,1])
+write_in_file('submission.csv', ID, Answers)
+
+"""
+my_data = genfromtxt('train.csv', delimiter=',', skip_header=1)
 #my_data = my_data[:, np.newaxis]
-
-answers = mydata[4, :]
+print(my_data)
+answers = my_data[:, 4]
 print(answers)
-
+"""
 """
 clf = SVC(kernel='rbf', gamma=2, C=1, probability=True)
 
