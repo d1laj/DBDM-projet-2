@@ -19,9 +19,9 @@ from sklearn.cross_validation import train_test_split
 # Putting this to true will include the numbers of day since the begining of the season into the data set
 useDates = False
 # If True will change the data set to use ratio of odds instead of the odds themselves
-useTranformation = True
+useTranformation = False
 # If False it will print cross validation results. If True will predict on the tests set
-useTests = True
+useTests = False
 # If True will print a list of matches that didn't go as expected. REQUIRED : useTests = False
 usePredictArtefacts = False
 # Threshold use in the prediction of artefacts:

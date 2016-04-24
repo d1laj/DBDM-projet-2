@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def ans_to_char(i):
     if i == 0:
         return 'H'

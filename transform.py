@@ -82,7 +82,7 @@ def date_to_float(x):
     month = x / 100
     month = int(month)
     # Number of day since august
-    x = month * 31 + day -1
+    x = month * 31 + day - 1
     x /= 365
     return x
 

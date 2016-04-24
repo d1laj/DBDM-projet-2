@@ -43,6 +43,7 @@ def read_train(train):
         data.append(line_list)
     return ID, data, answers, date
 
+
 def read_test(test):
     a = False
     f = open(test, 'r+')

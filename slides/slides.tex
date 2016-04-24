@@ -1,0 +1,144 @@
+\documentclass[french]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+
+\usepackage{babel}
+
+
+%CHOIX DU THEME et/ou DE SA COULEUR
+% => essayer différents thèmes (en décommantant une des trois lignes suivantes)
+%\usetheme{PaloAlto}
+%\usetheme{Madrid}
+\usetheme{Copenhagen}
+
+% => il est possible, pour un thème donné, de modifier seulement la couleur
+%\usecolortheme{crane}
+%\usecolortheme{seahorse}
+
+%\useoutertheme[left]{sidebar}
+
+
+%Pour le TITLEPAGE
+\title{Projet de DBDM 2}
+\subtitle{Football Data Challenge}
+\author{Simonaitis et Lajou}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		Our dataset : Football Data challenge
+		\includegraphics[scale=0.5]{LegaSerieAlogoTIM.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	Data from 1520 matches of serie A.\\
+	The following seasons are given:\\
+	\begin{tabbing}
+	~~~~\= 2008-2009\\
+	\>	2009-2010\\
+	\>	2010-2011\\
+	\>	2013-2014\\
+	\end{tabbing}
+	Our test set is composed of the following seasons:\\
+	\begin{tabbing}
+	~~~~\= 2014-2015\\
+	\>	2015-2016\\
+	\end{tabbing}
+\end{frame}
+
+
+\begin{frame}
+	For each match we have:
+	\begin{enumerate}
+		\item An ID of the match
+		\item The date of the match
+		\item The home team and the away team
+		\item The result for the matches in the train set (Home wins, Draw, Away wins)
+		\item A set of odds
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+	The odds for 6 differents sources.
+	Each is composed of 3 numbers.\\
+	Example: Sampdoria vs Juventus\\
+	\begin{center}
+		\begin{tabular}{lll}
+			Home odds & Draw odds & Away odds \\
+			8 & 4 & 1.45\\
+			7.25 & 4 & 1.48\\
+			5.5 & 4 & 1.55\\
+			6 & 4 & 1.53\\ 
+			7 & 4 & 1.5\\ 
+			7.5 & 4 & 1.55
+		\end{tabular}	
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	Un environnement \texttt{frame} pour chaque \emph{diapositive}.
+	\visible<2>{Chaque diapo pouvant contenir plusieurs \emph{couches}.}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+	Un environnement \texttt{frame} pour chaque \emph{diapositive}.
+	\visible<2>{Chaque diapo pouvant contenir plusieurs \emph{couches}.}
+\end{frame}
+
+
+\begin{frame}{On peut mettre un titre : Sommaire}
+	\tableofcontents
+\end{frame}
+
+\section{Section 1}
+\begin{frame}{La section 1 commence}
+	blabla
+\end{frame}
+
+\begin{frame}
+	Un \textbf<2,3>{texte} en gras.
+	\visible<3>{Un texte visible sur la 3\ieme{} couche}
+\end{frame}
+
+\begin{frame}{Titre (facultatif)}
+\framesubtitle{Sous titre (facultatif aussi)}
+	\begin{block}{Remarque}
+	Un bloc
+	\end{block}
+
+	\begin{alertblock}{Proposition}
+	Un bloc alerte
+	\end{alertblock}
+
+	\begin{exampleblock}<2>{Exemple}
+	Un bloc exemple qui est visible sur la 2\ieme{} couche : $f(x)=2x$.
+	\end{exampleblock}
+\end{frame}
+
+\section{Section 2}
+\begin{frame}{La section 2 commence}
+\begin{itemize}
+	\item<1-> On peut cliquer sur les titres de la barre de gauche pour naviguer dans les sections du pdf (essayez !).
+	\item<2-> On peut changer le ``look'' du beamer, en changeant de thème. Retournez dans le fichier source et compilez avec les autres thèmes proposés (il existe énormément de thèmes; seuls trois sont proposés dans le source).
+\end{itemize}
+
+\end{frame}
+
+\end{document}
