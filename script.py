@@ -23,11 +23,11 @@ useTranformation = False
 # If False it will print cross validation results. If True will predict on the tests set
 useTests = False
 # If True will print a list of matches that didn't go as expected. REQUIRED : useTests = False
-usePredictArtefacts = False
+usePredictArtefacts = True
 # Threshold use in the prediction of artefacts:
 artefactsThreshold = 0.1
 # Are draws artefacts ?
-excludeDraws = True
+excludeDraws = False
 # Use the following file to return the results. REQUIRED : useTests = True
 outFile = "submission.csv"
 
@@ -52,9 +52,10 @@ if useDates:
     date = np.array(transform_date(date))
     date = date[:, np.newaxis]
     X_train = np.hstack((X_train, date))
-    date_tests = np.array(transform_date(date_tests))
-    date_tests = date_tests[:, np.newaxis]
-    X_test = np.hstack((X_test, date_tests))
+    if useTests:
+        date_tests = np.array(transform_date(date_tests))
+        date_tests = date_tests[:, np.newaxis]
+        X_test = np.hstack((X_test, date_tests))
 
 if useTranformation:
     X_train = transform_data(X_train)
@@ -86,7 +87,7 @@ else:
                 if useTranformation:
                     print("\tFeatures : ratio of the odds: team1 / draw , team2 / draw, team1 / team2")
                 else:
-                    print("\tFeatures : Odds that team1 wins, Odds off draw, Odds that team2 wins (the lower the better)")
+                    print("\tFeatures : Odds that team1 wins, Odds of draw, Odds that team2 wins (the lower the better)")
                 for j in range(6):
                     print("\t", X_cross_test[i][j * 3 + 0], X_cross_test[i][j * 3 + 1], X_cross_test[i][j * 3 + 2])
                 print("\tResult = ", y_cross_test[i], " (0 = team1, 1 = draw, 2= team2)")

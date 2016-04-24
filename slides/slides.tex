@@ -41,24 +41,24 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Data}
 	Data from 1520 matches of serie A.\\
 	The following seasons are given:\\
-	\begin{tabbing}
-	~~~~\= 2008-2009\\
-	\>	2009-2010\\
-	\>	2010-2011\\
-	\>	2013-2014\\
-	\end{tabbing}
+	\begin{center}
+		2008-2009\\
+		2009-2010\\
+		2010-2011\\
+		2013-2014\\
+	\end{center}
 	Our test set is composed of the following seasons:\\
-	\begin{tabbing}
-	~~~~\= 2014-2015\\
-	\>	2015-2016\\
-	\end{tabbing}
+	\begin{center}
+		2014-2015\\
+		2015-2016\\
+	\end{center}
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{Data}
 	For each match we have:
 	\begin{enumerate}
 		\item An ID of the match
@@ -70,7 +70,7 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{Data}
 	The odds for 6 differents sources.
 	Each is composed of 3 numbers.\\
 	Example: Sampdoria vs Juventus\\
@@ -88,57 +88,46 @@
 \end{frame}
 
 
+\begin{frame}{Features}
+	We tried different features.\\
+	~\\
+	The first class was either directly the odds or a ratio of odds:\\
+	\begin{center}
+		\begin{tabular}{lll}
+			Home odds & Draw odds & Away odds \\
+			  & vs & \\
+			$\frac{\text{Home odds}}{\text{Draw odds}}$ & $\frac{\text{Away odds}}{\text{Draw odds}}$ & $\frac{\text{Home odds}}{\text{Away odds}}$\\
+		\end{tabular}	
+	\end{center}
+	~\\
+	The second class was an optional additional feature representing the date:\\
+	\begin{center}
+			Progress within the season $\in [0,1]$
+	\end{center}
+\end{frame}
+
+\begin{frame}{Features}
+	The best features with cross validation:
+	\begin{center}
+		\begin{tabular}{lll}
+			 & Without date & With date\\
+			 Odds & 54.44 \% & 53.95 \%\\
+			 Ratio & 54.77 \% & 54.77 \%\\
+		\end{tabular}	
+	\end{center}
+	The regression model is Logistic Regression.\\
+	Final score on Kaggle : 47.541 \%
+\end{frame}
+
+\begin{frame}{Upsets findings}
+	We also tried to detect upsets within the train set.\\
+	DEMO \\
+\end{frame}
+
 \begin{frame}
-	Un environnement \texttt{frame} pour chaque \emph{diapositive}.
-	\visible<2>{Chaque diapo pouvant contenir plusieurs \emph{couches}.}
-\end{frame}
-
-
-
-
-
-\begin{frame}
-	Un environnement \texttt{frame} pour chaque \emph{diapositive}.
-	\visible<2>{Chaque diapo pouvant contenir plusieurs \emph{couches}.}
-\end{frame}
-
-
-\begin{frame}{On peut mettre un titre : Sommaire}
-	\tableofcontents
-\end{frame}
-
-\section{Section 1}
-\begin{frame}{La section 1 commence}
-	blabla
-\end{frame}
-
-\begin{frame}
-	Un \textbf<2,3>{texte} en gras.
-	\visible<3>{Un texte visible sur la 3\ieme{} couche}
-\end{frame}
-
-\begin{frame}{Titre (facultatif)}
-\framesubtitle{Sous titre (facultatif aussi)}
-	\begin{block}{Remarque}
-	Un bloc
-	\end{block}
-
-	\begin{alertblock}{Proposition}
-	Un bloc alerte
-	\end{alertblock}
-
-	\begin{exampleblock}<2>{Exemple}
-	Un bloc exemple qui est visible sur la 2\ieme{} couche : $f(x)=2x$.
-	\end{exampleblock}
-\end{frame}
-
-\section{Section 2}
-\begin{frame}{La section 2 commence}
-\begin{itemize}
-	\item<1-> On peut cliquer sur les titres de la barre de gauche pour naviguer dans les sections du pdf (essayez !).
-	\item<2-> On peut changer le ``look'' du beamer, en changeant de thème. Retournez dans le fichier source et compilez avec les autres thèmes proposés (il existe énormément de thèmes; seuls trois sont proposés dans le source).
-\end{itemize}
-
+	\begin{center}
+		Thank you for you attention.
+	\end{center}
 \end{frame}
 
 \end{document}
