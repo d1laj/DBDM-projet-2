@@ -1,5 +1,6 @@
 #!python3
 
+# Imports section
 import sklearn
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
@@ -14,61 +15,80 @@ from read import *
 from transform import *
 from sklearn.cross_validation import train_test_split
 
-models = [
-    ('Knn 5', KNeighborsClassifier(5)),
-    ('Naive Bayes', GaussianNB()),
-    ('Logistic Regression', LogisticRegression()),
-#    ('Linear SVM', SVC(kernel='linear', probability=True)),
-#    ('Poly SVM', SVC(kernel='poly', degree=2, probability=True)),
-    ('RBF SVM', SVC(kernel='rbf', gamma=2, C=1, probability=True)),
-    ('Classification Tree', DecisionTreeClassifier(max_depth=5)),
-    ('Random Forest', RandomForestClassifier(max_depth=5, n_estimators=50))
-]
+# Some parameters
+# Putting this to true will include the numbers of day since the begining of the season into the data set
+useDates = False
+# If True will change the data set to use ratio of odds instead of the odds themselves
+useTranformation = True
+# If False it will print cross validation results. If True will predict on the tests set
+useTests = True
+# If True will print a list of matches that didn't go as expected. REQUIRED : useTests = False
+usePredictArtefacts = False
+# Threshold use in the prediction of artefacts:
+artefactsThreshold = 0.1
+# Are draws artefacts ?
+excludeDraws = True
+# Use the following file to return the results. REQUIRED : useTests = True
+outFile = "submission.csv"
 
+# We define the model of learning
+clf = LogisticRegression()
+
+# We get the datas
 ID, X_train, y_train, date = read_train('train.csv')
-# X_test, ID = read_test('test.csv')
+if useTests:
+    ID_test, X_test, date_tests = read_test('test.csv')
+    X_test = np.array(X_test)
 X_train = np.array(X_train)
 y_train = np.array(y_train)
 
 # Remove the NaN values
-# imp = Imputer(missing_values='NaN', strategy='mean', axis=0)
-# imp = imp.fit(X_train)
-
-# X_train = imp.transform(X_train)
 X_train = remove_nan(X_train)
-"""date = np.array(transform_date(date))
-date = date[:, np.newaxis]
-print(date.shape, X_train.shape)
-X_train = np.hstack((X_train, date))"""
-print(X_train)
-# X_test = imp.transform(X_test)
+if useTests:
+    X_test = remove_nan(X_test)
 
-X_cross_train, X_cross_test, y_cross_train, y_cross_test = train_test_split(X_train, y_train, test_size=.4, random_state=42)
+# Add the dates to the features if set to True
+if useDates:
+    date = np.array(transform_date(date))
+    date = date[:, np.newaxis]
+    X_train = np.hstack((X_train, date))
+    date_tests = np.array(transform_date(date_tests))
+    date_tests = date_tests[:, np.newaxis]
+    X_test = np.hstack((X_test, date_tests))
 
+if useTranformation:
+    X_train = transform_data(X_train)
+    if useTests:
+        X_test = transform_data(X_test)
 
-for model in models:
-    clf = model[1]
-    print('\n', model[0])
+if useTests:
+    clf.fit(X_train, y_train)
+    # Predict the results
+    predict = clf.predict(X_test)
+    # Output the predictions
+    write_in_file(outFile, ID_test, predict)
+else:
+    # We are set to view the score on cross validation
+    X_cross_train, X_cross_test, y_cross_train, y_cross_test = train_test_split(X_train, y_train, test_size=.4, random_state=42)
     clf.fit(X_cross_train, y_cross_train)
 
     score = clf.score(X_cross_test, y_cross_test)
-    print(score)
+    print("Cross validation score : ", score)
 
-X_train = transform_data(X_train)
-print(X_train)
-
-# Split the data
-print(X_train.shape, y_train.shape)
-X_cross_train, X_cross_test, y_cross_train, y_cross_test = train_test_split(X_train, y_train, test_size=.4, random_state=42)
-
-for model in models:
-    clf = model[1]
-    print('\n', model[0])
-    clf.fit(X_cross_train, y_cross_train)
-
-    score = clf.score(X_cross_test, y_cross_test)
-    print(score)
-
-# result = clf.predict(X_test)
+    if usePredictArtefacts:
+        # We get the probabilites for each match
+        result = clf.predict_proba(X_cross_test)
+        for i in range(len(y_cross_test)):
+            if excludeDraws and y_cross_test[i] == 1:
+                continue
+            if result[i][y_cross_test[i]] <= artefactsThreshold:
+                print("Artefact :\n\tPrediction: ", result[i])
+                if useTranformation:
+                    print("\tFeatures : ratio of the odds: team1 / draw , team2 / draw, team1 / team2")
+                else:
+                    print("\tFeatures : Odds that team1 wins, Odds off draw, Odds that team2 wins (the lower the better)")
+                for j in range(6):
+                    print("\t", X_cross_test[i][j * 3 + 0], X_cross_test[i][j * 3 + 1], X_cross_test[i][j * 3 + 2])
+                print("\tResult = ", y_cross_test[i], " (0 = team1, 1 = draw, 2= team2)")
 
 # write_in_file('submission.csv', ID, results)
