@@ -1,0 +1,40 @@
+\documentclass[11pt]{article} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{hyperref}
+
+\title{Football Data Challenge}
+\author{\text{\small{prepared by} \large{Dimitri Lajou, Pijus Simonaitis}} \\ \text{\large{ENS Lyon, DBDM M1}}}
+\date{April 25, 2016}
+\begin{document}
+
+\maketitle
+
+\section{Choosing the data set}
+
+\href{https://inclass.kaggle.com/c/football-data-challenge/}{Football data challenges} data set from \href{https://inclass.kaggle.com/}{kaggle in Class} attracted our attention because of our interest in football and curiosity about how predictable the outcomes of football matches are. In addition to that the given data set happend to require little of preprocessing.
+
+\section{Description of the data set}
+
+Our data set consisted of:
+\begin{enumerate}
+		\item Unique ID associated to every match
+		\item Date of the match
+		\item Home and away teams
+		\item Sets of odds proposed by six betting agencies: Bet365, Bet$\&$Win, Interwetten, Ladbrokes, VC Bet and William Hill 
+\end{enumerate}
+
+A set of odds consists of scores for:
+
+\begin{enumerate}
+		\item Home win
+		\item Away win
+		\item Draws 
+\end{enumerate}
+
+\end{document}
+
+
+
