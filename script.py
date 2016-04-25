@@ -21,7 +21,7 @@ useDates = False
 # If True will change the data set to use ratio of odds instead of the odds themselves
 useTranformation = False
 # If False it will print cross validation results. If True will predict on the tests set
-useTests = False
+useTests = True
 # If True will print a list of matches that didn't go as expected. REQUIRED : useTests = False
 usePredictArtefacts = True
 # Threshold use in the prediction of artefacts:
