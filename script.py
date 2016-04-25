@@ -27,7 +27,7 @@ usePredictArtefacts = True
 # Threshold use in the prediction of artefacts:
 artefactsThreshold = 0.1
 # Are draws artefacts ?
-excludeDraws = False
+excludeDraws = True
 # Use the following file to return the results. REQUIRED : useTests = True
 outFile = "submission.csv"
 
@@ -66,6 +66,7 @@ if useTests:
     clf.fit(X_train, y_train)
     # Predict the results
     predict = clf.predict(X_test)
+    print(clf.predict_proba(X_test))
     # Output the predictions
     write_in_file(outFile, ID_test, predict)
 else:
@@ -91,5 +92,3 @@ else:
                 for j in range(6):
                     print("\t", X_cross_test[i][j * 3 + 0], X_cross_test[i][j * 3 + 1], X_cross_test[i][j * 3 + 2])
                 print("\tResult = ", y_cross_test[i], " (0 = team1, 1 = draw, 2= team2)")
-
-# write_in_file('submission.csv', ID, results)
