@@ -1,4 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Problem}{}% 1
 \BOOKMARK [1][-]{section.2}{Description of the data set}{}% 2
-\BOOKMARK [1][-]{section.3}{Dataset}{}% 3
-\BOOKMARK [1][-]{section.4}{Patterns in the Data Set}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Dataset}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Patterns in the Data Set}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Features}{}% 5
+\BOOKMARK [1][-]{section.4}{Model}{}% 6
+\BOOKMARK [1][-]{section.5}{Results}{}% 7
+\BOOKMARK [1][-]{section.6}{Artefact Detection}{}% 8
