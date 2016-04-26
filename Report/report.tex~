@@ -39,7 +39,7 @@ Training set included 1520 matches from the seasons 2008-2011 and 2013-2014 whil
 
 \section{Patterns in the Data Set}
 
-In the training set 48.5$\%$ of the matches were won by home team, 26,2$\%$ by away team and 25,3$\%$ resulted in a tie. However on average less than 1.5$\%$ of the matches were predicted to result in a tie by a betting agency and only 2 out of 1520 matches were predicted to result in a tie by all of the agencies. Thus the rarity of the predicted draws was a handicap that predertimined the fact that almost none of the draws were predicted by our algorithm as well.  
+In the training set 48.5$\%$ of the matches were won by home team, 26,2$\%$ by away team and 25,3$\%$ resulted in a tie. However on average less than 1.5$\%$ of the matches were predicted to result in a tie by a betting agency and only 2 out of 1520 matches were predicted to result in a tie by all of the agencies. Thus the rarity of the predicted draws was a handicap that predertimined the fact that almost none of the draws were predicted by our algorithm as well, meaning that outcomes of 25$\%$ of the matches were deemed to be predicted falsely.  
 
 \end{document}
 
