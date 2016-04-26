@@ -12,13 +12,14 @@
 
 \maketitle
 
-\section{Choosing the data set}
+\section{Problem}
 
-\href{https://inclass.kaggle.com/c/football-data-challenge/}{Football data challenges} data set from \href{https://inclass.kaggle.com/}{kaggle in Class} attracted our attention because of our interest in football and curiosity about how predictable the outcomes of football matches are. In addition to that the given data set happend to require little of preprocessing.
-
+In our project we tried to predict an outcome of the football match from the betting odds provided by the betting agencies. \href{https://inclass.kaggle.com/c/football-data-challenge/}{Football data challenges} data set from \href{https://inclass.kaggle.com/}{kaggle in Class} provided us with information on the betting odds from Serie A, Italian football league. We were attracted by this problem because of our interest in football and curiosity about how predictable the outcomes of the football matches are.
 \section{Description of the data set}
 
-Our data set consisted of:
+\section{Dataset}
+
+Another interest of the data set was that it was easy to comprehend and required little of preprocessing as it consisted of a few factors:
 \begin{enumerate}
 		\item Unique ID associated to every match
 		\item Date of the match
@@ -26,13 +27,19 @@ Our data set consisted of:
 		\item Sets of odds proposed by six betting agencies: Bet365, Bet$\&$Win, Interwetten, Ladbrokes, VC Bet and William Hill 
 \end{enumerate}
 
-A set of odds consists of scores for:
+A set of odds being the scores for:
 
 \begin{enumerate}
 		\item Home win
 		\item Away win
 		\item Draws 
 \end{enumerate}
+
+Training set included 1520 matches from the seasons 2008-2011 and 2013-2014 while test set consisted of matches from the seasons 2014-2016. 
+
+\section{Patterns in the Data Set}
+
+In the training set 48.5$\%$ of the matches were won by home team, 26,2$\%$ by away team and 25,3$\%$ resulted in a tie. However on average less than 1.5$\%$ of the matches were predicted to result in a tie by a betting agency and only 2 out of 1520 matches were predicted to result in a tie by all of the agencies. Thus the rarity of the predicted draws was a handicap that predertimined the fact that almost none of the draws were predicted by our algorithm as well.  
 
 \end{document}
 
