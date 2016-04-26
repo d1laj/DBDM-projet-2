@@ -1,7 +1,7 @@
 import numpy as np
 import math
 
-
+# Transform the odds into a ratio
 def transform_data(X):
     """X est de la forme B365H, B365D, B365A, BWH, BWD, BWA, IWH, IWD, IWA, LBH, LBD, LBA, VCH, VCD, VCA, WHH, WHD, WHA
     X deviens une table de ratio entre les côtes"""
@@ -18,7 +18,7 @@ def transform_data(X):
             X[line, i * 3 + 2] = ratio_HA
     return X
 
-
+# We remove the NaN in the dataset
 def remove_nan(X):
     """X est de la forme B365H, B365D, B365A, BWH, BWD, BWA, IWH, IWD, IWA, LBH, LBD, LBA, VCH, VCD, VCA, WHH, WHD, WHA"""
     for line in range(X.shape[0]):
@@ -32,7 +32,7 @@ def remove_nan(X):
         for i in range(6):
             H = X[line, i * 3]
             D = X[line, i * 3 + 1]
-            A = X[line, i * 3 + 2]  # Changer 2 par 1 nous fait gagner un peu ici
+            A = X[line, i * 3 + 2]
             if not math.isnan(H):
                 mean_h += H
                 ch += 1
@@ -42,6 +42,7 @@ def remove_nan(X):
             if not math.isnan(A):
                 mean_a += A
                 ca += 1
+        # We compute the mean of each odd. In case where there is no value, the mean is 1.0
         if ch == 0:
             mean_h = 1.0
         else:
@@ -70,7 +71,7 @@ def remove_nan(X):
             X[line, i * 3 + 2] = A
     return X
 
-
+# Transform the date into a float between 0 and 1 describing the progressin within the season
 def date_to_float(x):
     # Remove the year
     x = x % 10000

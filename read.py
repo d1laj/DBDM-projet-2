@@ -1,14 +1,19 @@
 import numpy as np
 
-
+# Parse the train set
 def read_train(train):
     a = False
     f = open(train, 'r+')
+    # Id of the match
     ID = []
+    # The data for each match
     data = []
+    # The result of teh match
     answers = []
+    # The date of the match
     date = []
     for line in f:
+        # To ignore the first line
         if not a:
             a = True
             continue
@@ -43,7 +48,7 @@ def read_train(train):
         data.append(line_list)
     return ID, data, answers, date
 
-
+# PArse the test set
 def read_test(test):
     a = False
     f = open(test, 'r+')

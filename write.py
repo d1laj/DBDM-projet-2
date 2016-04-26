@@ -1,5 +1,7 @@
 import numpy as np
 
+# This file takes care of the output of our program
+
 
 def ans_to_char(i):
     if i == 0:
